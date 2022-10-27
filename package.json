@@ -1,0 +1,46 @@
+{
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prepack": "npm run build && eslint . && npm run fmtsrc",
+    "fmtsrc": "eslint . --fix",
+    "lint": "eslint .",
+    "lint:js:fix": "eslint --ignore-path .gitignore . --fix",
+    "build": "truffle compile --all",
+    "test": "truffle compile --all --solc-version=0.5.9"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "lodash": "^4.17.11",
+    "prettier": "^1.11.1",
+    "truffle": "^5.6.2",
+    "truffle-hdwallet-provider-klaytn": "^1.4.2",
+    "yargs": "^13.2.1"
+  },
+  "name": "canonical-wklay",
+  "description": "Canonical WKLAY",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "canonical",
+    "wklay",
+    "Klaytn",
+    "truffle",
+    "smart-contract"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

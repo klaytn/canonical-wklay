@@ -1,0 +1,16 @@
+{
+  "WKLAY": {
+    "1001": {
+      "events": {},
+      "links": {},
+      "address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+      "transactionHash": "0xb95343413e459a0f97461812111254163ae53467855c0d73e0f1e7c5b8442fa3"
+    },
+    "8217": {
+      "events": {},
+      "links": {},
+      "address": "0xc778417e063141139fce010982780140aa0cd5ab",
+      "transactionHash": "0x19ae7fb1bd96c6f623741f76573a3e97d8a863358dafb1d773a8f9ad98b424b4"
+    }
+  }
+}
