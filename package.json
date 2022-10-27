@@ -29,18 +29,19 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/klaytn/canonical-wklay"
   },
   "keywords": [
     "canonical",
     "wklay",
     "Klaytn",
     "truffle",
-    "smart-contract"
+    "smart-contract",
+    "wrapped klay"
   ],
   "license": "GPL-3.0",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/klaytn/canonical-wklay/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/klaytn/canonical-wklay"
 }
