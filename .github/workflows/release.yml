@@ -16,7 +16,8 @@ jobs:
     - run: npm install
     - run: |
         npm prepack
-        npm publish 
-      env: 
-        GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish package to npm.js
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        access: public
