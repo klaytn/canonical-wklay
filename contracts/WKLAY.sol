@@ -42,7 +42,7 @@ contract WKLAY {
     function withdraw(uint256 wad) public {
         require(balanceOf[msg.sender] >= wad, "WKLAY: amount exceeds balance");
         balanceOf[msg.sender] -= wad;
-        (bool success, ) = msg.sender.call.value(amount)("");
+        (bool success, ) = msg.sender.call{value: wad}("");
         require(success, "WKLAY: KLAY transfer failed");
         emit Withdrawal(msg.sender, wad);
     }
@@ -66,10 +66,16 @@ contract WKLAY {
         address dst,
         uint256 wad
     ) public returns (bool) {
-        require(balanceOf[src] >= wad, "WKLAY: transfer amount exceeds balance");
+        require(
+            balanceOf[src] >= wad,
+            "WKLAY: transfer amount exceeds balance"
+        );
 
         if (src != msg.sender && allowance[src][msg.sender] != uint256(-1)) {
-            require(allowance[src][msg.sender] >= wad, "WKLAY: allowance exceeds balance");
+            require(
+                allowance[src][msg.sender] >= wad,
+                "WKLAY: allowance exceeds balance"
+            );
             allowance[src][msg.sender] -= wad;
         }
 
