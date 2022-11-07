@@ -14,7 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-pragma solidity >=0.5.9;
+// SPDX-License-Identifier: GPL-3.0-only
+pragma solidity >=0.7.0 <0.8.0;
 
 contract WKLAY {
     string public name = "Wrapped Klay";
@@ -29,7 +30,7 @@ contract WKLAY {
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    function() external payable {
+    receive() external payable {
         deposit();
     }
 
@@ -39,9 +40,10 @@ contract WKLAY {
     }
 
     function withdraw(uint256 wad) public {
-        require(balanceOf[msg.sender] >= wad);
+        require(balanceOf[msg.sender] >= wad, "WKLAY: amount exceeds balance");
         balanceOf[msg.sender] -= wad;
-        msg.sender.transfer(wad);
+        (bool success, ) = msg.sender.call{value: wad}("");
+        require(success, "WKLAY: KLAY transfer failed");
         emit Withdrawal(msg.sender, wad);
     }
 
@@ -64,10 +66,16 @@ contract WKLAY {
         address dst,
         uint256 wad
     ) public returns (bool) {
-        require(balanceOf[src] >= wad);
+        require(
+            balanceOf[src] >= wad,
+            "WKLAY: transfer amount exceeds balance"
+        );
 
         if (src != msg.sender && allowance[src][msg.sender] != uint256(-1)) {
-            require(allowance[src][msg.sender] >= wad);
+            require(
+                allowance[src][msg.sender] >= wad,
+                "WKLAY: allowance exceeds balance"
+            );
             allowance[src][msg.sender] -= wad;
         }
 
