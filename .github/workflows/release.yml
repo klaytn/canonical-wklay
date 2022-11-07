@@ -16,7 +16,7 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependancies and build
-        run: npm install && npm prepack
+        run: npm install && npm run prepack
       - name: Publish package to npm.js
         uses: JS-DevTools/npm-publish@v1
         with:
